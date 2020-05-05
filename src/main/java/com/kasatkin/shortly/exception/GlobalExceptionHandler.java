@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +25,14 @@ public class GlobalExceptionHandler {
          String errorMessage = error.getDefaultMessage();
          errors.put(fieldName, errorMessage);
       });
+      return errors;
+   }
+
+   @ResponseBody
+   @ResponseStatus(HttpStatus.NOT_FOUND)
+   @ExceptionHandler(BadShortURLException.class)
+   public Map<String, String> handleBadShortURl(BadShortURLException e) {
+      Map<String, String> errors = Collections.singletonMap("errorMessage", e.getMessage());
       return errors;
    }
 }

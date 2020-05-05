@@ -1,7 +1,7 @@
 package com.kasatkin.shortly.api.generator;
 
 import com.kasatkin.shortly.domain.ShortLink;
-import com.kasatkin.shortly.dto.shortlink.ShortLinkInputDTO;
+import com.kasatkin.shortly.dto.shortlink.InputLinkDTO;
 import com.kasatkin.shortly.service.ShortLinkGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class ShortLinkGeneratorController {
 
    @PostMapping
    @ResponseBody
-   public ShortLink generateNewShortLink(@RequestBody @Valid ShortLinkInputDTO dto) {
+   public ShortLink generateNewShortLink(@RequestBody @Valid InputLinkDTO dto) {
       return generatorService.generateShortLink(dto);
    }
 }

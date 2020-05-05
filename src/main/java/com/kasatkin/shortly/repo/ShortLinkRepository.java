@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ShortLinkRepository extends JpaRepository<ShortLink, Long> {
 
    ShortLink findByOriginalLink(String originalLink);
+   ShortLink findByShortLink(String shortLink);
 
 }

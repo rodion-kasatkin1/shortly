@@ -4,17 +4,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-public class ShortLinkInputDTO {
+public class InputLinkDTO {
 
    @NotNull
    @NotBlank
    @Pattern(regexp = "([--:\\w?@%&+~#=]*\\.[a-z]{2,4}\\/{0,2})((?:[?&](?:\\w+)=(?:\\w+))+|[--:\\w?@%&+~#=]+)?")
    private String inputLink;
 
-   public ShortLinkInputDTO() {
+   public InputLinkDTO() {
    }
 
-   public ShortLinkInputDTO(@Pattern(regexp = "([--:\\w?@%&+~#=]*\\.[a-z]{2,4}\\/{0,2})((?:[?&](?:\\w+)=(?:\\w+))+|[--:\\w?@%&+~#=]+)?") String inputLink) {
+   public InputLinkDTO(@Pattern(regexp = "([--:\\w?@%&+~#=]*\\.[a-z]{2,4}\\/{0,2})((?:[?&](?:\\w+)=(?:\\w+))+|[--:\\w?@%&+~#=]+)?") String inputLink) {
       this.inputLink = inputLink;
    }
 

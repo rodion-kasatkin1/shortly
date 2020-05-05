@@ -1,7 +1,7 @@
 package com.kasatkin.shortly.service;
 
 import com.kasatkin.shortly.domain.ShortLink;
-import com.kasatkin.shortly.dto.shortlink.ShortLinkInputDTO;
+import com.kasatkin.shortly.dto.shortlink.InputLinkDTO;
 import com.kasatkin.shortly.generator.ShortLinkGenerator;
 import com.kasatkin.shortly.repo.ShortLinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ShortLinkGeneratorService {
       this.shortLinkGenerator = shortLinkGenerator;
    }
 
-   public ShortLink generateShortLink(ShortLinkInputDTO dto) {
+   public ShortLink generateShortLink(InputLinkDTO dto) {
       ShortLink existedShortlink = shortLinkRepository.findByOriginalLink(dto.getInputLink());
       if (existedShortlink != null) {
          return existedShortlink;
