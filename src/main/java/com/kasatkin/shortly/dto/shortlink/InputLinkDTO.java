@@ -6,9 +6,9 @@ import javax.validation.constraints.Pattern;
 
 public class InputLinkDTO {
 
-   @NotNull
-   @NotBlank
-   @Pattern(regexp = "([--:\\w?@%&+~#=]*\\.[a-z]{2,4}\\/{0,2})((?:[?&](?:\\w+)=(?:\\w+))+|[--:\\w?@%&+~#=]+)?")
+   @NotNull(message = "validation.dto.inputLink.blank")
+   @NotBlank(message = "validation.dto.inputLink.null")
+   @Pattern(regexp = "([--:\\w?@%&+~#=]*\\.[a-z]{2,4}\\/{0,2})((?:[?&](?:\\w+)=(?:\\w+))+|[--:\\w?@%&+~#=]+)?", message = "validation.dto.inputLink.pattern.invalid")
    private String inputLink;
 
    public InputLinkDTO() {

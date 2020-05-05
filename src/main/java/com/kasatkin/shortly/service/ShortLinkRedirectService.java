@@ -23,6 +23,6 @@ public class ShortLinkRedirectService {
          shortLinkRepository.save(link);
          return link.getOriginalLink();
       }
-      throw new BadShortURLException("Bad URL " + url);
+      throw new BadShortURLException("validation.dto.shortInputlink.notexist", url);
    }
 }
