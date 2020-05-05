@@ -12,7 +12,7 @@ import store from 'store/vuexstore';
 
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-
+import router from 'router/router'
 
 Vue.use(Vuetify, {
     theme: {
@@ -26,6 +26,7 @@ Vue.use(Vuetify, {
 new Vue({
     el: '#app',
     store,
+    router,
     vuetify: new Vuetify({}),
     render: a => a(App)
 })

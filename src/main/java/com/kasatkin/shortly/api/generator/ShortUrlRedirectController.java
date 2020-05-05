@@ -23,7 +23,6 @@ public class ShortUrlRedirectController {
       RedirectView redirectView = new RedirectView(redirectUrl);
       redirectView.setStatusCode(HttpStatus.TEMPORARY_REDIRECT);
       ModelAndView modelAndView = new ModelAndView(redirectView);
-      // md.addObject("param1", "hello"); //Add your params here
       return modelAndView;
    }
 }

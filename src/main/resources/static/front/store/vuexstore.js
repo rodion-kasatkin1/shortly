@@ -11,12 +11,18 @@ import generateShortLinkApi from '../api/generateShortLinkApi'
 
 export default new Vuex.Store({
     state: {
+        feData: frontendData,
         error: null,
         shortLink: null
         /*messages: frontendData.messages,
         profile: frontendData.profile*/
     },
     getters: {
+        getErrorAfterReloadPage: state => {
+            if (state.feData != null) {
+                return state.feData.errorMessage
+            }
+        }
         /*
                 sortedMessages: state => state.messages.sort((a, b) => -(a.id - b.id))
         */
@@ -27,7 +33,13 @@ export default new Vuex.Store({
         },
         throwErrorMessage(state, error) {
             state.error = error
-        }
+        },
+        invalidateErrorMessage(state) {
+            
+            if (state.feData != null && state.feData.errorMessage != null) {
+              state.feData.errorMessage=null;
+            }
+          }
         /* addMessageMutation(state, message) {
              state.messages = [
                  ...state.messages, 
@@ -59,7 +71,7 @@ export default new Vuex.Store({
                     result.json().then(
                         data => commit('updateShortLink', data)
                     )
-                }, reject => reject.json().then(error=>
+                }, reject => reject.json().then(error =>
                     commit('throwErrorMessage', error))
             )
         }
