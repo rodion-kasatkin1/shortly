@@ -25,4 +25,26 @@ public class InputLinkDTO {
    public void setInputLink(String inputLink) {
       this.inputLink = inputLink;
    }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o)
+         return true;
+      if (o == null || getClass() != o.getClass())
+         return false;
+
+      InputLinkDTO that = (InputLinkDTO) o;
+
+      return inputLink != null ? inputLink.equals(that.inputLink) : that.inputLink == null;
+   }
+
+   @Override
+   public int hashCode() {
+      return inputLink != null ? inputLink.hashCode() : 0;
+   }
+
+   @Override
+   public String toString() {
+      return "InputLinkDTO{" + "inputLink='" + inputLink + '\'' + '}';
+   }
 }

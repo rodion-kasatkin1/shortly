@@ -3,7 +3,9 @@
     <!--<left-tool-bar isDrawer="lefttoolbar"></left-tool-bar>-->
     <head-bar></head-bar>
     <router-view></router-view>
-    <v-alert :value="alert" type="error" dismissible>{{this.getErrorAfterReloadPage}}</v-alert>
+    <v-snackbar top :value="alert" color="#e86100" dismissible >
+      {{this.getErrorAfterReloadPage}}
+      </v-snackbar>
   </v-app>
 </template>
 

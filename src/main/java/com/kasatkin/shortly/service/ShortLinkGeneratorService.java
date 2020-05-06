@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShortLinkGeneratorService {
 
+   private static final String HTTPS = "https://";
+   private static final String HTTP = "http://";
+
    private ShortLinkRepository shortLinkRepository;
    private ShortLinkGenerator shortLinkGenerator;
 
@@ -20,15 +23,18 @@ public class ShortLinkGeneratorService {
    }
 
    public ShortLink generateShortLink(InputLinkDTO dto) {
-      ShortLink existedShortlink = shortLinkRepository.findByOriginalLink(dto.getInputLink());
+      String inputLink = dto.getInputLink();
+      if (!(inputLink.contains(HTTPS) || inputLink.contains(HTTP))) {
+         inputLink = HTTP + inputLink;
+      }
+      ShortLink existedShortlink = shortLinkRepository.findByOriginalLink(inputLink);
       if (existedShortlink != null) {
          return existedShortlink;
       }
       ShortLink link = new ShortLink();
-      link.setOriginalLink(dto.getInputLink());
+      link.setOriginalLink(inputLink);
       link.setShortLink(shortLinkGenerator.generateRandomShortLink());
       return shortLinkRepository.save(link);
-
    }
 
 }

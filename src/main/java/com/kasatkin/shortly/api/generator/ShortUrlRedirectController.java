@@ -1,5 +1,6 @@
 package com.kasatkin.shortly.api.generator;
 
+import com.kasatkin.shortly.logging.Loggable;
 import com.kasatkin.shortly.service.ShortLinkRedirectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ public class ShortUrlRedirectController {
    @Autowired
    private ShortLinkRedirectService redirectService;
 
+   @Loggable
    @GetMapping
    ModelAndView redirectByShortLink(@PathVariable String shortURL) {
       String redirectUrl = redirectService.getRedirect(shortURL);
